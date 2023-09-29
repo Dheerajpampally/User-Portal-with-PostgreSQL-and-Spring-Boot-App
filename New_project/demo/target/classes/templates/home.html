@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header {
+            position: relative;
+            background-color: #2e3135;
+            color: #fff;
+            padding: 80px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #f39c12;
+        }
+        .hero {
+            text-align: center;
+            padding: 150px 0;
+            /* background-image: url('https://wallpaperaccess.com/full/210964.jpg'); */
+            background-size: cover;
+            color: #fff;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #123019;
+            color: #fcf5f5;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #631c14;
+        }
+        .section {
+            padding: 100px 0;
+            text-align: center;
+            background-color: #f7e7ce;
+        }
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .section p {
+            font-size: 18px;
+            color: #777;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .image-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 0;
+            background-color: #343a40;
+        }
+        .image-container {
+            max-width: 600px;
+            position: relative;
+        }
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(52, 58, 64, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .image-container:hover .image-overlay {
+            opacity: 1;
+        }
+        .image-overlay h3 {
+            font-size: 28px;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 40px 0;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #fff;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #f39c12;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 30px;
+            border: 7px solid #76c8d6; /* Adding a border */
+            border-radius: 20px; /* Adding border radius */
+            position: relative;
+    }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+            .form-group {
+        margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .login-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #86aed8;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .login-button:hover {
+            background-color: #193e66;
+        }
+        .registration-modal {
+            background-color: #fff;
+            border-radius: 10px;
+            border: 7px solid #76c8d6;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 350px;
+            margin-top: 10px;
+        }
+
+        .registration-form label {
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 5px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .regBtn{
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #86aed8;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        .regBtn:hover{
+            background-color: #193e66;
+        }
+        .about1{
+            background-color: #d6d0d0;
+            padding: 100px 0;
+            text-align: center;
+        }
+            /* .registration-form {
+                Styles for your registration form 
+            } */
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">WELCOME</div>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Your Ultimate Destination for Creativity</h1>
+            <p>Explore our services and make your ideas come to life.</p>
+            <a href="#services" class="cta-button">Get Started</a>
+        </div>
+    </header>
+    
+    <section id="user-registration" class="section">
+        <h2>Register Now</h2>
+        <p>Create an account to access exclusive features.</p><br>
+        <a href="#" class="cta-button" onclick="openModal()">Register</a><br>
+        <br><p>----------OR----------</p><br>
+        <a href="#" class="cta-button" onclick="openLoginModal()">Login</a><br><br><br>
+    </section>
+  
+    
+
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>User Registration</h2>
+            <form id="registrationForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required class="input-field"><br>
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" required class="input-field"><br>
+            
+                <label for="password">Password:</label>
+                <input type="password" id="passwordInput" required class="input-field"><br>
+                
+            
+                <label for="phonenumber">Phone Number:</label>
+                <input type="text" id="phonenumber" required class="input-field"><br>
+            
+                <label for="dateofbirth">Date of Birth:</label>
+                <input type="date" id="dateofbirth" required class="input-field"><br>
+            
+                <button type="button" class="regBtn" onclick="registerUser()">Register</button>
+                <button type="button" class="regBtn" onclick="resetForm()">Reset</button>
+            </form>
+            
+        </div>
+    </div>
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeLoginModal()">&times;</span>
+            <h2>User Login</h2>
+            <form id="loginForm">
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" required class="input-field"><br>
+    
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" required class="input-field"><br>
+    
+                <button type="button" class = "login-button" onclick="loginUser()">Login</button>
+                <button type="button"  class = "login-button" onclick="closeLoginModal()">Cancel</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="successModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeSuccessModal()">&times;</span>
+            <h2>Registration Successful</h2>
+            <p>Congratulations! You have successfully registered.</p>
+        </div>
+    </div>
+    
+    <section id="about" class="about1">
+        <h2>About Us</h2>
+    </section>
+
+    <section id="services" class="section">
+        <h2>Our Services</h2>
+        <p>Discover a wide range of services </p>
+    </section>
+
+        <section id="products" class="image-section">
+            <div class="image-container">
+                <img src="https://img.freepik.com/free-photo/flat-lay-workstation-with-copy-space-laptop_23-2148430879.jpg?size=626&ext=jpg" alt="Portfolio Image">
+                <div class="image-overlay">
+                    <h3>Project Showcase</h3>
+                </div>
+            </div>
+        </section>
+    
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us </p>
+            <div class="contact-info">
+                <p>Email: contact@example.com</p>
+                <p>Phone: +123-456-7890</p>
+            </div>
+        </section>
+    
+        <footer class="footer">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" class="icon-link">Facebook</a>
+                <a href="#" class="icon-link">Twitter</a>
+                <a href="#" class="icon-link">Instagram</a>
+            </div>
+            <p>&copy; 2023 Your Company. All rights reserved.</p>
+        </footer>
+    
+        <script>
+                function openLoginModal() {
+                    document.getElementById('loginModal').style.display = 'block';
+                }
+
+                function closeLoginModal() {
+                    document.getElementById('loginModal').style.display = 'none';
+                }
+
+                // function openLoginModal() {
+                //     openLoginModal('loginModal');
+                // }
+            function openModal() {
+                document.getElementById('registrationModal').style.display = 'block';
+            }
+    
+            function closeModal() {
+                document.getElementById('registrationModal').style.display = 'none';
+            }
+            // function loginUser() {
+           
+   
+    function registerUser() {
+            // Get form input values
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("passwordInput").value;
+            var phonenumber = document.getElementById("phonenumber").value;
+            var dateofbirth = document.getElementById("dateofbirth").value;
+
+            // Validation for name
+            if (!name.match(/^[A-Za-z\s]+$/)) {
+                alert("Please enter a valid name.");
+                return;
+            }
+
+            // Validation for email
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            // Validation for password (at least 6 characters)
+            if (password.length > 8) {
+                alert("Password must be at least 8 characters long.");
+                return;
+            }
+
+            // Validation for phone number (optional, 10 digits)
+            if (phonenumber && !phonenumber.match(/^\d{10}$/)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return;
+            }
+
+            // Validation for date of birth (optional, in yyyy-mm-dd format)
+            if (dateofbirth && !dateofbirth.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                alert("Please enter a valid date of birth in yyyy-mm-dd format.");
+                return;
+            }
+
+            // If all validations pass, send the data to the server
+            var user = {
+                name: name,
+                email: email,
+                password: password,
+                phonenumber: phonenumber,
+                dateofbirth: dateofbirth
+            };
+
+            // Send a POST request to the server
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Registration failed');
+                }
+            })
+            .then(data => {
+                alert(data.message);
+                document.getElementById("successModal").style.display = "block";
+                resetForm();
+                
+            })
+            .catch(error => {
+                alert('Registration failed: ' + error.message);
+            });
+        
+
+        console.log("Name:", name);
+        console.log("Email:", email);
+         console.log("Password value:", password);
+        console.log("Phone Number:", phonenumber);
+        console.log("Date of Birth:", dateofbirth);
+
+       
+    }
+    function loginUser() {
+       
+    // Gather login form data
+    var email = document.getElementById("loginEmail").value;
+    var password = document.getElementById("loginPassword").value;
+
+    // Create a JavaScript object with login data
+    var loginData = {
+        email: email,
+        password: password
+    };
+
+    // Send a POST request to the server for login
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginData)
+    })
+    .then(response => {
+        if (response.ok) {
+            // Redirect to profile.html upon successful login
+            window.location.href = '/profile.html';
+           
+        } else {
+            throw new Error('Login failed');
+        }
+    })
+    .catch(error => {
+        alert('Login failed: ' + error.message);
+    });
+}
+
+    function closeSuccessModal() {
+                // Close the success modal
+                document.getElementById("successModal").style.display = "none";
+                // Reset the registration form fields
+                document.getElementById("registration-form").resetForm();
+            }
+
+                function resetForm() {
+                        var form = document.getElementById("registrationForm");
+                        if (form) {
+                            form.reset();
+                        }
+                    }
+
+            
+            
+           
+           
+        </script>
+    </body>
+    </html>
+    
